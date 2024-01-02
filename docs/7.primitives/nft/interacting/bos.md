@@ -19,15 +19,21 @@ This snippet will enable your users to mint NFTs in one of the NFT solutions.
 <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
 ```js
-const tokenData = Near.call("nft.primitives.near", "nft_mint", {
-  token_id: "1",
-  receiver_id: "bob.near", 
-  token_metadata: {
-    title: "NFT Primitive Token",
-    description: "Awesome NFT Primitive Token",
-    media: "string", // URL to associated media, preferably to decentralized, content-addressed storage
-  }
-});
+const tokenData = Near.call(
+  "nft.primitives.near",
+  "nft_mint",
+  {
+    token_id: "1",
+    receiver_id: "bob.near", 
+    token_metadata: {
+      title: "NFT Primitive Token",
+      description: "Awesome NFT Primitive Token",
+      media: "string", // URL to associated media, preferably to decentralized, content-addressed storage
+    }
+  },
+  undefined,
+  10000000000000000000000, // Depends on your NFT metadata
+);
 ```
 
 </TabItem>
@@ -35,10 +41,16 @@ const tokenData = Near.call("nft.primitives.near", "nft_mint", {
 <TabItem value="Paras" label="Paras">
 
 ```js
-const tokenData = Near.call("x.paras.near", "nft_mint", {
-  token_series_id: "490641",
-  receiver_id: "bob.near",
-});
+const tokenData = Near.call(
+  "x.paras.near",
+  "nft_mint",
+  {
+    token_series_id: "490641",
+    receiver_id: "bob.near",
+  },
+  undefined,
+  10000000000000000000000 // Depends on your NFT metadata
+);
 ```
 
 :::note
@@ -59,7 +71,7 @@ const tokenData = Near.call(
     metadata: {},
   },
   undefined,
-  1
+  10000000000000000000000
 );
 ```
 
@@ -68,6 +80,7 @@ In order to use `nft_batch_mint` method of Mintbase store contract your account 
 :::
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -92,16 +105,12 @@ const tokenData = Near.call(
 );
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 "299102:1"
 ```
 
-</p>
-</details>
 
 </TabItem>
 
@@ -121,9 +130,7 @@ const tokenData = Near.call(
 );
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -134,10 +141,9 @@ const tokenData = Near.call(
 }
 ```
 
-</p>
-</details>
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -155,9 +161,7 @@ const tokenData = Near.view("nft.primitives.near", "nft_token", {
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -180,8 +184,6 @@ const tokenData = Near.view("nft.primitives.near", "nft_token", {
 }
 ```
 
-</p>
-</details>
 
 </TabItem>
 
@@ -195,9 +197,7 @@ const tokenData = Near.view("x.paras.near", "nft_token", {
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -221,8 +221,6 @@ const tokenData = Near.view("x.paras.near", "nft_token", {
 }
 ```
 
-</p>
-</details>
 
 By calling a Paras API method
 
@@ -230,9 +228,7 @@ By calling a Paras API method
 const tokenData = fetch("https://api-v2-mainnet.paras.id/token?token_id=84686:1154");
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -287,8 +283,6 @@ const tokenData = fetch("https://api-v2-mainnet.paras.id/token?token_id=84686:11
 }
 ```
 
-</p>
-</details>
 
 :::info
 See the [Paras API documentation](https://parashq.github.io/) for the full list of methods.
@@ -312,9 +306,7 @@ const tokenData = Near.view("anthropocene.mintbase1.near", "nft_token", {
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -353,8 +345,6 @@ const tokenData = Near.view("anthropocene.mintbase1.near", "nft_token", {
 }
 ```
 
-</p>
-</details>
 
 :::note
 When someone creates a NFT on Mintbase they need to deploy their own NFT contract using Mintbase factory. Those smart contract are subaccounts of mintbase1.near, e.g. `anthropocene.mintbase1.near`.
@@ -392,9 +382,7 @@ const tokenData = fetch("https://graph.mintbase.xyz", {
 });
 ```
 
-<details>
-<summary>Example response</summary>
-<p>
+**Example response:**
 
 ```json
 {
@@ -419,14 +407,13 @@ const tokenData = fetch("https://graph.mintbase.xyz", {
 }
 ```
 
-</p>
-</details>
 
 :::note
 In the future, users may be required to register using an api key. For now, simply passing the valueanon for `mb-api-key` will work.
 :::
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -439,10 +426,16 @@ This snippet will enable your users to transfer NFTs in one of the NFT solutions
 <TabItem value="NFT Primitive" label="NFT Primitive" default>
 
 ```js
-const tokenData = Near.call("nft.primitives.near", "nft_transfer", {
-  token_id: "1",
-  receiver_id: "bob.near"
-});
+const tokenData = Near.call(
+  "nft.primitives.near",
+  "nft_transfer",
+  {
+    token_id: "1",
+    receiver_id: "bob.near"
+  },
+  undefined,
+  1,
+);
 ```
 
 </TabItem>
@@ -450,10 +443,16 @@ const tokenData = Near.call("nft.primitives.near", "nft_transfer", {
 <TabItem value="Paras" label="Paras">
 
 ```js
-const tokenData = Near.call("x.paras.near", "nft_transfer", {
-  token_id: "490641",
-  receiver_id: "bob.near"
-});
+const tokenData = Near.call(
+  "x.paras.near",
+  "nft_transfer",
+  {
+    token_id: "490641",
+    receiver_id: "bob.near"
+  },
+  undefined,
+  1
+);
 ```
 
 </TabItem>
@@ -461,13 +460,20 @@ const tokenData = Near.call("x.paras.near", "nft_transfer", {
 <TabItem value="Mintbase" label="Mintbase">
 
 ```js
-const tokenData = Near.call("thomasettorreiv.mintbase1.near", "nft_transfer", {
-  token_id: "490641",
-  receiver_id: "bob.near"
-});
+const tokenData = Near.call(
+  "thomasettorreiv.mintbase1.near",
+  "nft_transfer",
+  {
+    token_id: "490641",
+    receiver_id: "bob.near"
+  },
+  undefined,
+  1
+);
 ```
 
 </TabItem>
+
 </Tabs>
 
 ---
@@ -547,4 +553,5 @@ Near.call(
 The method `nft_approve` will call `nft_on_approve` in `simple.market.mintbase1.near`.
 
 </TabItem>
+
 </Tabs>

@@ -42,10 +42,7 @@
       ]
     },
     {
-      "Tokens": [
-        "concepts/basics/tokens",
-        "concepts/basics/token-loss"
-      ]
+      "Tokens": ["concepts/basics/tokens", "concepts/basics/token-loss"]
     },
     {
       "Storage": [
@@ -106,7 +103,7 @@
   ],
   "contracts": [
     "develop/contracts/welcome",
-    "develop/quickstart-guide",
+    "develop/contracts/whatisacontract",
     {
       "type": "html",
       "value": "<hr/>"
@@ -116,10 +113,10 @@
       "value": "<span class='menu__link'><b><small> Building Smart Contracts </small></b></span>"
     },
     [
-      "develop/contracts/whatisacontract",
+      "develop/contracts/quickstart",
       {
-        "Build a Contract": [
-          "develop/contracts/introduction",
+        
+        "Anatomy of a Contract": [
           "develop/contracts/basics",
           "develop/contracts/anatomy",
           "develop/contracts/environment/environment",
@@ -200,7 +197,6 @@
     },
     {
       "Examples": [
-        "tutorials/examples/hello-near",
         "tutorials/examples/guest-book",
         "tutorials/examples/xcc",
         "tutorials/examples/coin-flip",
@@ -328,7 +324,7 @@
     {
       "type": "link",
       "label": "Development Kit (SDK) ↗",
-      "href": "/tools/sdk/welcome"
+      "href": "/sdk/welcome"
     },
     {
       "type": "link",
@@ -387,22 +383,16 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> Fungible Tokens (FT) </small></b></span>"
     },
+    "primitives/ft/introduction",
     {
-      "type": "html",
-      "value": "<span class='menu__link'>Coming Soon</span>"
+      "Using FTs": [
+        "primitives/ft/interacting/bos",
+        "primitives/ft/interacting/web-app",
+        "primitives/ft/interacting/smart-contract",
+        "primitives/ft/interacting/near-cli"
+      ]
     },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> DAOs </small></b></span>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'>Coming Soon</span>"
-    },
+    "primitives/ft/additional-resources",
     {
       "type": "html",
       "value": "<hr/>"
@@ -411,9 +401,47 @@
       "type": "html",
       "value": "<span class='menu__link'><b><small> DEX </small></b></span>"
     },
+    "primitives/dex/introduction",
+    {
+      "Using DEX": [
+        "primitives/dex/interacting/bos",
+        "primitives/dex/interacting/web-app",
+        "primitives/dex/interacting/smart-contract",
+        "primitives/dex/interacting/near-cli"
+      ]
+    },
     {
       "type": "html",
-      "value": "<span class='menu__link'>Coming Soon</span>"
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> DAO </small></b></span>"
+    },
+    "primitives/dao/introduction",
+    {
+      "Using DAO": [
+        "primitives/dao/interacting/bos",
+        "primitives/dao/interacting/web-app",
+        "primitives/dao/interacting/smart-contract",
+        "primitives/dao/interacting/near-cli"
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Linkdrops </small></b></span>"
+    },
+    "primitives/linkdrop/introduction",
+    {
+      "Creating Linkdrops": [
+        "primitives/linkdrop/interacting/bos",
+        "primitives/linkdrop/interacting/web-app",
+        "primitives/linkdrop/interacting/near-cli"
+      ]
     }
   ],
   "tools": [
@@ -443,8 +471,8 @@
         },
         {
           "type": "link",
-          "label": "Type Docs ↗",
-          "href": "/tools/near-api-js/reference"
+          "label": "Type Docs",
+          "href": "https://near.github.io/near-api-js"
         }
       ]
     },
@@ -477,9 +505,7 @@
               ]
             },
             {
-              "Cross-Contract Calls": [
-                "sdk/rust/cross-contract/callbacks"
-              ]
+              "Cross-Contract Calls": ["sdk/rust/cross-contract/callbacks"]
             },
             {
               "Promises": [
@@ -512,7 +538,7 @@
             {
               "type": "link",
               "label": "Type Docs ↗",
-              "href": "/sdk/near-sdk-js/reference"
+              "href": "https://near.github.io/near-sdk-js/"
             },
             {
               "Structure of a Contract": [
@@ -528,9 +554,7 @@
               ]
             },
             {
-              "Cross-Contract Calls": [
-                "sdk/js/cross-contract/callbacks"
-              ]
+              "Cross-Contract Calls": ["sdk/js/cross-contract/callbacks"]
             },
             {
               "Promises": [
@@ -548,9 +572,7 @@
               ]
             },
             {
-              "SDK CLI": [
-                "sdk/js/cli/cli"
-              ]
+              "SDK CLI": ["sdk/js/cli/cli"]
             },
             {
               "Testing": [
@@ -565,10 +587,7 @@
     {
       "type": "category",
       "label": "Command Line Tools (CLI)",
-      "items": [
-        "tools/near-cli",
-        "tools/near-cli-rs"
-      ]
+      "items": ["tools/near-cli", "tools/near-cli-rs"]
     },
     {
       "type": "category",
@@ -758,12 +777,16 @@
       "href": "/bos/queryapi/intro#known-limitations"
     },
     "bos/community/indexers",
+    "bos/queryapi/best-practices",
     "bos/queryapi/index-functions",
     "bos/queryapi/context-object",
+    "bos/queryapi/query-data",
+    "bos/queryapi/migrate-from-near-lake",
     {
       "Tutorials": [
         "bos/tutorial/indexer-tutorials/posts-indexer",
         "bos/tutorial/indexer-tutorials/hype-indexer",
+        "bos/tutorial/indexer-tutorials/nft-indexer",
         "bos/tutorial/indexer-tutorials/feed-indexer"
       ]
     },
@@ -864,6 +887,27 @@
     "api/rpc/protocol",
     "api/rpc/network",
     "api/rpc/transactions"
+  ],
+  "data-availability": [
+    "data-availability/welcome",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> DA Docs </small></b></span>"
+    },
+    "data-availability/blob-contract",
+    "data-availability/light-client",
+    "data-availability/rpc",
+    {
+      "Integrations": [
+        "data-availability/integrations",
+        "data-availability/optimism",
+        "data-availability/cdk-integration"
+      ]
+    }
   ],
   "exchanges": [
     {
