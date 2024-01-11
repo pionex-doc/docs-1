@@ -36,11 +36,11 @@ Make sure to change the `src/data/bos-components.ts` file
 
 ## Deploying Gateway in Vercel
 
-Launching your own NEAR BOS gateway instance is a quick and simple process. In this example we'll be using [Vercel](https://vercel.com) to build and deploy a new BOS gateway, but you can also use other platforms.
+Launching your own NEAR gateway instance is a quick and simple process. In this example we'll be using [Vercel](https://vercel.com) to build and deploy a new NEAR gateway, but you can also use other platforms.
 
 Just follow these easy steps:
 
-1. Clone the [`near/bos-gateway`](git@github.com:near-examples/bos-gateway.git) repository
+1. Clone the [`near/bos-gateway`](https://github.com/near-examples/bos-gateway) repository
 2. Sign up on [Vercel](https://vercel.com/) and import the cloned repository
 3. Setup the project:
    - Any team name
@@ -56,7 +56,7 @@ Click [on this link](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fg
 
 ![vercel setup](/docs/vercel-gateway.png)
 
-Now just wait a few minutes for Vercel to build the website and enjoy your BOS gateway!
+Now just wait a few minutes for Vercel to build the website and enjoy your NEAR gateway!
 
 :::info Customization
 - If you want to host the gateway on a specific domain you can configure it on Vercel.

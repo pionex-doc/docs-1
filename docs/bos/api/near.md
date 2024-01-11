@@ -1,12 +1,10 @@
 ---
 id: near
-title: NEAR API
-sidebar_label: NEAR
+title: Near
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-## Near APIs
 
 VM provides a convenient API to interact with the NEAR blockchain. There are three methods:
 
@@ -16,14 +14,14 @@ VM provides a convenient API to interact with the NEAR blockchain. There are thr
 
 ## Near.block
 
-| param                 | required | type | description                                                                                                                                       |
-| --------------------- | -------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `blockHeightOrFinality` | _optional_    | any  | The block height or finality level to use for the blockchain query (desired block height, or one of the following strings: `optimistic`, `final`) |
+| param                   | required   | type | description                                                                                                                                       |
+|-------------------------|------------|------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| `blockHeightOrFinality` | _optional_ | any  | The block height or finality level to use for the blockchain query (desired block height, or one of the following strings: `optimistic`, `final`) |
 
 :::info
 
 - desired block height: The height of the specific block to query, expressed as a positive integer
-- `optimistic`: Uses the latest block recorded on the node that responded to your query (<1 second delay)
+- `optimistic`: Uses the latest block recorded on the node that responded to your query (< 1 second delay)
 - `final`: a block that has been validated on at least 66% of the nodes in the network (approx. 2s)
 
 :::
@@ -33,7 +31,7 @@ VM provides a convenient API to interact with the NEAR blockchain. There are thr
 <Tabs>
 <TabItem value="request" label="Request" default>
 
-```jsx
+```js
 return Near.block("optimistic");
 ```
 
@@ -83,8 +81,9 @@ return Near.block("optimistic");
       "tx_root": "11111111111111111111111111111111",
       "validator_proposals": [],
       "validator_reward": "0"
-    },...],
-    ...}
+    }
+  ],
+}
 ```
 
 </TabItem>
@@ -94,13 +93,13 @@ return Near.block("optimistic");
 
 ## Near.call
 
-| param          | required | type            | description                                                                 |
-| -------------- | -------- | --------------- | --------------------------------------------------------------------------- |
-| `contractName` | **required**     | string             | Name of the smart contract to call                                          |
-| `methodName`   | **required**     | string             | Name of the method to call on the smart contract                            |
-| `args`         | _optional_    | object instance | Arguments to pass to the smart contract method as an object instance        |
-| `gas`          | _optional_    | string / number             | Maximum amount of gas to be used for the transaction (default 300Tg)        |
-| `deposit`      | _optional_    | string / number             | Amount of NEAR tokens to attach to the call as deposit (in yoctoNEAR units) |
+| param          | required     | type            | description                                                                 |
+|----------------|--------------|-----------------|-----------------------------------------------------------------------------|
+| `contractName` | **required** | string          | Name of the smart contract to call                                          |
+| `methodName`   | **required** | string          | Name of the method to call on the smart contract                            |
+| `args`         | _optional_   | object instance | Arguments to pass to the smart contract method as an object instance        |
+| `gas`          | _optional_   | string / number | Maximum amount of gas to be used for the transaction (default 300Tg)        |
+| `deposit`      | _optional_   | string / number | Amount of NEAR tokens to attach to the call as deposit (in yoctoNEAR units) |
 
 This will conduct a call to a smart contract that will store a message onchain.
 
@@ -109,7 +108,7 @@ This will conduct a call to a smart contract that will store a message onchain.
 <Tabs>
 <TabItem value="request" label="Request" default>
 
-```jsx
+```js
 return Near.call("nearsocialexamples.near", "set_greeting", {
   message: "Hi Near Social",
 });
@@ -122,7 +121,7 @@ Upon hitting the `Render` button in `Widget Editor` you should see this:
 
 ![result](https://i.imgur.com/Lft2rtR.png)
 
-Please take a look at [this Explorer link](https://explorer.near.org/transactions/8PyDVdbizhNj81LxfwdZ1WidKZyS8HVZp8udPKgzFiNi) to see the details related to this `Near.call` method.
+Please take a look at [this Explorer link](https://nearblocks.io/txns/8PyDVdbizhNj81LxfwdZ1WidKZyS8HVZp8udPKgzFiNi) to see the details related to this `Near.call` method.
 
 </TabItem>
 </Tabs>
@@ -131,18 +130,18 @@ Please take a look at [this Explorer link](https://explorer.near.org/transaction
 
 ## Near.view
 
-| param              | required | type            | description                                                                                                                    |
-| ------------------ | -------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| `contractName`     | **required**     | string             | Name of the smart contract                                                                                                     |
-| `methodName`       | **required**     | string             | Name of the method to call                                                                                                     |
-| `args`             | _optional_    | object instance | Arguments to pass to the method                                                                                                |
-| `blockId/finality` | _optional_    | string             | Block ID or finality of the transaction                                                                                        |
-| `subscribe`        | _optional_    | boolean            | This feature allows users to subscribe to a query, which automatically refreshes the data for all subscribers every 5 seconds. |
+| param              | required     | type            | description                                                                                                                    |
+|--------------------|--------------|-----------------|--------------------------------------------------------------------------------------------------------------------------------|
+| `contractName`     | **required** | string          | Name of the smart contract                                                                                                     |
+| `methodName`       | **required** | string          | Name of the method to call                                                                                                     |
+| `args`             | _optional_   | object instance | Arguments to pass to the method                                                                                                |
+| `blockId/finality` | _optional_   | string          | Block ID or finality of the transaction                                                                                        |
+| `subscribe`        | _optional_   | boolean         | This feature allows users to subscribe to a query, which automatically refreshes the data for all subscribers every 5 seconds. |
 
 <Tabs>
 <TabItem value="request" label="Request" default>
 
-```jsx
+```js
 return Near.view("nearsocialexamples.near", "get_greeting", `{}`);
 ```
 
@@ -151,7 +150,7 @@ return Near.view("nearsocialexamples.near", "get_greeting", `{}`);
 
 Upon hitting the `Render` button in `Widget Editor` you should see this:
 
-```jsx
+```js
 "Hi Near Social";
 ```
 
@@ -162,7 +161,7 @@ Upon hitting the `Render` button in `Widget Editor` you should see this:
 
 Below is an example of how to conduct a Call and View Method within `near.social`
 
-```jsx
+```js
 State.init({
   value: "value to update",
 });

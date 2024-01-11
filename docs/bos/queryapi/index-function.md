@@ -11,7 +11,7 @@ QueryAPI is a fully managed service that allows you to create and manage indexer
 
 ## Indexing
 
-Let's review a [very simple indexer](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/demo-indexer&view=editor-window), which will help you to understand
+Let's review a [very simple indexer](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/demo-indexer), which will help you to understand
 how the indexer's indexing logic works.
 
 ```js title=indexingLogic.js
@@ -102,8 +102,8 @@ or simply support every single contract that exists on the Near blockchain.
 #### Single contract filter
 
 
-For example, if you check out the [simple indexer](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/demo-indexer&view=editor-window), you'll see that in this case
-you have a `social.near` contract filter. 
+For example, if you check out the [simple indexer](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=roshaan.near/demo-indexer), you'll see that in this case
+you have a `social.near` contract filter.
 In this example, the indexer is only concerned on indexing events from `social.near`'s contract.
 
 #### Multiple contracts filter
@@ -149,22 +149,22 @@ and data passed into it.
 :::
 
 
-## Create a BOS component from query
+## Create a NEAR component from query
 
-Creating a BOS component from a GraphQL query is simple when using the GraphQL Playground. Just follow these steps:
+Creating a NEAR component from a GraphQL query is simple when using the GraphQL Playground. Just follow these steps:
 
 - go to the GraphiQL tab
 - select the query that you want to use
 - click on the <kbd>Show GraphiQL Code Exporter</kbd> button
 - get some default code here, copy it,
-- go to the BOS sandbox, paste it.
+- go to the NEAR sandbox, paste it.
 
 
 This will set up some boilerplate code to execute the GraphQL query, add the query that you had
 in your playground and then call that query, extract the data and render it using the
 render data function.
 
-Once you have the BOS component code, you can test it out by going to [the sandbox](https://near.org/sandbox),
+Once you have the NEAR component code, you can test it out by going to [the sandbox](https://near.org/sandbox),
 pasting the generated code, and then selecting <kbd>Component Preview</kbd>.
-Next, you can create a nice UI over this boilerplate code, and publish your new BOS component.
+Next, you can create a nice UI over this boilerplate code, and publish your new NEAR component.
 

@@ -4,7 +4,7 @@ title: The Contract Class
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 Your contract's logic and state (storage) is defined by the [main class](#near-bindgen), in which:
 1. The attributes define the [contract's state](#defining-the-state)
@@ -201,8 +201,8 @@ be called for free by everyone, **without needing** a NEAR account.
 as calling other contracts.
 
 :::caution
-By default `view` methods have `200TGas` to execute, to increase this you can simple invoke them
-as `call` methods
+By default `view` methods have `200TGas` to execute, to increase this you can simply invoke them
+as `call` methods.
 :::
 
 :::danger

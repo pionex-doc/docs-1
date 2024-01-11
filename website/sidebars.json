@@ -42,10 +42,7 @@
       ]
     },
     {
-      "Tokens": [
-        "concepts/basics/tokens",
-        "concepts/basics/token-loss"
-      ]
+      "Tokens": ["concepts/basics/tokens", "concepts/basics/token-loss"]
     },
     {
       "Storage": [
@@ -106,7 +103,7 @@
   ],
   "contracts": [
     "develop/contracts/welcome",
-    "develop/quickstart-guide",
+    "develop/contracts/whatisacontract",
     {
       "type": "html",
       "value": "<hr/>"
@@ -116,10 +113,10 @@
       "value": "<span class='menu__link'><b><small> Building Smart Contracts </small></b></span>"
     },
     [
-      "develop/contracts/whatisacontract",
+      "develop/contracts/quickstart",
       {
-        "Build a Contract": [
-          "develop/contracts/introduction",
+        
+        "Anatomy of a Contract": [
           "develop/contracts/basics",
           "develop/contracts/anatomy",
           "develop/contracts/environment/environment",
@@ -200,7 +197,6 @@
     },
     {
       "Examples": [
-        "tutorials/examples/hello-near",
         "tutorials/examples/guest-book",
         "tutorials/examples/xcc",
         "tutorials/examples/coin-flip",
@@ -328,7 +324,7 @@
     {
       "type": "link",
       "label": "Development Kit (SDK) ↗",
-      "href": "/tools/sdk/welcome"
+      "href": "/sdk/welcome"
     },
     {
       "type": "link",
@@ -359,6 +355,95 @@
       "href": "https://aurora.dev"
     }
   ],
+  "primitives": [
+    "primitives/welcome",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Non Fungible Tokens (NFT) </small></b></span>"
+    },
+    "primitives/nft/introduction",
+    {
+      "Using NFTs": [
+        "primitives/nft/interacting/bos",
+        "primitives/nft/interacting/web-app",
+        "primitives/nft/interacting/smart-contract",
+        "primitives/nft/interacting/near-cli"
+      ]
+    },
+    "primitives/nft/additional-resources",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Fungible Tokens (FT) </small></b></span>"
+    },
+    "primitives/ft/introduction",
+    {
+      "Using FTs": [
+        "primitives/ft/interacting/bos",
+        "primitives/ft/interacting/web-app",
+        "primitives/ft/interacting/smart-contract",
+        "primitives/ft/interacting/near-cli"
+      ]
+    },
+    "primitives/ft/additional-resources",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> DEX </small></b></span>"
+    },
+    "primitives/dex/introduction",
+    {
+      "Using DEX": [
+        "primitives/dex/interacting/bos",
+        "primitives/dex/interacting/web-app",
+        "primitives/dex/interacting/smart-contract",
+        "primitives/dex/interacting/near-cli"
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> DAO </small></b></span>"
+    },
+    "primitives/dao/introduction",
+    {
+      "Using DAO": [
+        "primitives/dao/interacting/bos",
+        "primitives/dao/interacting/web-app",
+        "primitives/dao/interacting/smart-contract",
+        "primitives/dao/interacting/near-cli"
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Linkdrops </small></b></span>"
+    },
+    "primitives/linkdrop/introduction",
+    {
+      "Creating Linkdrops": [
+        "primitives/linkdrop/interacting/bos",
+        "primitives/linkdrop/interacting/web-app",
+        "primitives/linkdrop/interacting/near-cli"
+      ]
+    }
+  ],
   "tools": [
     "tools/welcome",
     {
@@ -386,8 +471,8 @@
         },
         {
           "type": "link",
-          "label": "Type Docs ↗",
-          "href": "/tools/near-api-js/reference"
+          "label": "Type Docs",
+          "href": "https://near.github.io/near-api-js"
         }
       ]
     },
@@ -420,9 +505,7 @@
               ]
             },
             {
-              "Cross-Contract Calls": [
-                "sdk/rust/cross-contract/callbacks"
-              ]
+              "Cross-Contract Calls": ["sdk/rust/cross-contract/callbacks"]
             },
             {
               "Promises": [
@@ -455,7 +538,7 @@
             {
               "type": "link",
               "label": "Type Docs ↗",
-              "href": "/sdk/near-sdk-js/reference"
+              "href": "https://near.github.io/near-sdk-js/"
             },
             {
               "Structure of a Contract": [
@@ -471,9 +554,7 @@
               ]
             },
             {
-              "Cross-Contract Calls": [
-                "sdk/js/cross-contract/callbacks"
-              ]
+              "Cross-Contract Calls": ["sdk/js/cross-contract/callbacks"]
             },
             {
               "Promises": [
@@ -491,9 +572,7 @@
               ]
             },
             {
-              "SDK CLI": [
-                "sdk/js/cli/cli"
-              ]
+              "SDK CLI": ["sdk/js/cli/cli"]
             },
             {
               "Testing": [
@@ -508,10 +587,7 @@
     {
       "type": "category",
       "label": "Command Line Tools (CLI)",
-      "items": [
-        "tools/near-cli",
-        "tools/near-cli-rs"
-      ]
+      "items": ["tools/near-cli", "tools/near-cli-rs"]
     },
     {
       "type": "category",
@@ -521,7 +597,7 @@
           "type": "link",
           "label": "near.org Web Editor",
           "href": "https://near.org/sandbox"
-        }, 
+        },
         {
           "type": "link",
           "label": "Jutsu Web Editor",
@@ -593,14 +669,20 @@
     {
       "Component API": [
         "bos/api/home",
-        "bos/api/cache",
-        "bos/api/clipboard",
-        "bos/api/fetch",
-        "bos/api/near",
-        "bos/api/primitives",
-        "bos/api/social",
         "bos/api/state",
-        "bos/api/storage"
+        "bos/api/near",
+        {
+          "SocialDB": [
+            "bos/api/social",
+            "bos/api/indexing",
+            "bos/api/notifications"
+          ]
+        },
+        "bos/api/fetch",
+        "bos/api/storage",
+        "bos/api/primitives",
+        "bos/api/cache",
+        "bos/api/clipboard"
       ]
     },
     {
@@ -611,7 +693,10 @@
         "bos/tutorial/ds-components",
         "bos/tutorial/using-iframes",
         "bos/tutorial/bos-gateway",
+        "bos/tutorial/push-notifications",
+        "bos/tutorial/queryapi-websockets",
         "bos/tutorial/ethers-js",
+        "bos/tutorial/ethers-js-best-practices",
         "bos/tutorial/lido"
       ]
     },
@@ -659,6 +744,11 @@
     },
     {
       "type": "link",
+      "label": "QueryAPI ↗",
+      "href": "/bos/queryapi/intro"
+    },
+    {
+      "type": "link",
       "label": "BOS CLI",
       "href": "https://github.com/FroVolod/bos-cli-rs"
     },
@@ -677,13 +767,28 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> Track Real-time Events </small></b></span>"
+      "value": "<span class='menu__link'><b><small> QueryAPI </small></b></span>"
     },
-    "tools/realtime",
+    "bos/queryapi/intro",
+    "bos/queryapi/how-it-works",
     {
       "type": "link",
-      "label": "Real-time Events (Lake)",
-      "href": "/tutorials/indexer/nft-indexer"
+      "label": "Limitations",
+      "href": "/bos/queryapi/intro#known-limitations"
+    },
+    "bos/community/indexers",
+    "bos/queryapi/best-practices",
+    "bos/queryapi/index-functions",
+    "bos/queryapi/context-object",
+    "bos/queryapi/query-data",
+    "bos/queryapi/migrate-from-near-lake",
+    {
+      "Tutorials": [
+        "bos/tutorial/indexer-tutorials/posts-indexer",
+        "bos/tutorial/indexer-tutorials/hype-indexer",
+        "bos/tutorial/indexer-tutorials/nft-indexer",
+        "bos/tutorial/indexer-tutorials/feed-indexer"
+      ]
     },
     {
       "type": "html",
@@ -701,25 +806,6 @@
     },
     {
       "type": "html",
-      "value": "<span class='menu__link'><b><small> QueryAPI </small></b></span>"
-    },
-    "bos/queryapi/intro",
-    "bos/queryapi/how-it-works",
-    "bos/queryapi/index-functions",
-    "bos/community/indexers",
-    {
-      "Tutorials": [
-        "bos/tutorial/indexer-tutorials/posts-indexer",
-        "bos/tutorial/indexer-tutorials/hype-indexer",
-        "bos/tutorial/indexer-tutorials/feed-indexer"
-      ]
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
       "value": "<span class='menu__link'><b><small> NEAR Lake Framework </small></b></span>"
     },
     "tools/near-lake",
@@ -728,6 +814,11 @@
     {
       "Building Indexers": [
         "develop/lake/primitives",
+        {
+          "type": "link",
+          "label": "NEAR Lake Primitives",
+          "href": "https://near.github.io/near-lake-framework-js/"
+        },
         "tutorials/indexer/js-lake-indexer",
         "tutorials/indexer/python-lake-indexer",
         "tutorials/indexer/nft-indexer",
@@ -759,6 +850,20 @@
     },
     {
       "type": "html",
+      "value": "<span class='menu__link'><b><small> Track Real-time Events </small></b></span>"
+    },
+    "tools/realtime",
+    {
+      "type": "link",
+      "label": "Real-time Events (Lake)",
+      "href": "/tutorials/indexer/nft-indexer"
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
       "value": "<span class='menu__link'><b><small> Ecosystem Tools </small></b></span>"
     },
     "tools/indexing"
@@ -782,6 +887,27 @@
     "api/rpc/protocol",
     "api/rpc/network",
     "api/rpc/transactions"
+  ],
+  "data-availability": [
+    "data-availability/welcome",
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> DA Docs </small></b></span>"
+    },
+    "data-availability/blob-contract",
+    "data-availability/light-client",
+    "data-availability/rpc",
+    {
+      "Integrations": [
+        "data-availability/integrations",
+        "data-availability/optimism",
+        "data-availability/cdk-integration"
+      ]
+    }
   ],
   "exchanges": [
     {

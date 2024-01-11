@@ -4,7 +4,7 @@ title: Minting Fungible Tokens
 ---
 
 In this tutorial, you'll learn how to easily create your own Fungible Tokens (FT) without doing any software development by using a readily-available smart contract.
-This article will show you how to use an existing [FT smart contract](#fungible-token-contract), and you'll learn [how to mint](#minting-your-fts) fungible tokens and [view them](#checking-your-wallet) in your Wallet.
+This article will show you how to use an existing [FT smart contract](0-predeployed.md), and you'll learn [how to mint](#minting-your-fts) fungible tokens and [view them](#checking-your-wallet) in your Wallet.
 
 ## Prerequisites
 
@@ -15,10 +15,10 @@ To complete this tutorial successfully, you'll need:
 
 ### Wallet
 
-To store your fungible tokens you'll need a [NEAR Wallet](https://wallet.testnet.near.org/).
-If you don't have one yet, you can create one easily by following [these instructions](https://wallet.testnet.near.org/create).
+To store your fungible tokens you'll need a [NEAR Wallet](https://testnet.mynearwallet.com//).
+If you don't have one yet, you can create one easily by following [these instructions](https://testnet.mynearwallet.com/create).
 
-Once you have your Wallet account, you can click on the [Balances Tab](https://wallet.testnet.near.org/?tab=balances) where all your Fungible Tokens will be listed:
+Once you have your Wallet account, you can click on the [Balances Tab](https://testnet.mynearwallet.com//?tab=balances) where all your Fungible Tokens will be listed:
 
 ![Wallet](/docs/assets/fts/empty-wallet-ft-tab.png)
 
@@ -81,7 +81,7 @@ View call: ft.examples.testnet.ft_balance_of({"account_id": "benji_test.testnet"
 ### Checking your Wallet
 
 :::tip
-After you mint your fungible token you can [view it in your NEAR Wallet](https://wallet.testnet.near.org)!
+After you mint your fungible token you can [view it in your NEAR Wallet](https://testnet.mynearwallet.com/)!
 :::
 
 > <br/>

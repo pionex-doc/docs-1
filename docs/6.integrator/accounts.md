@@ -327,8 +327,8 @@ and its status contains `SuccessValue`, which indicates that the receipt has suc
 **Example of transfer from a multisig contract**
 
 Mutisig contract, as the name suggests, uses multiple signatures to confirm a transaction and therefore, actions performed
-by the multisig contract involves multiple transactions. In the following example, we will show a how a transfer is done from
-a mutlisig contract that requires two confirmations.
+by the multisig contract involves multiple transactions. In the following example, we will show how a transfer is done from
+a multisig contract that requires two confirmations.
 
 - First step: `add_request_and_confirm`. This initiates the action that the multisig contract wants to perform with one
   confirmation. The multisig contract `multsigtest.testnet` wants to transfer 1 NEAR to `bowen` and it first
@@ -730,6 +730,5 @@ and we can find its outcome in `receipts_outcome`:
 which indicates that the transaction is successful.
 
 :::tip Got a question?
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol">
-<h8>Ask it on StackOverflow!</h8></a>
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol"> Ask it on StackOverflow! </a>
 :::

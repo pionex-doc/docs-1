@@ -8,7 +8,7 @@ sidebar_label: Hype Indexer
 
 NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers. 
 
-You can request access through [this link](https://near.org/dev-queryapi.dataplatform.near/widget/NearQueryApi) or by contacting us in the [Near Indexer Builder Group](https://nearbuilders.com/tg-data) on Telegram.
+You can request access through [this link](http://bit.ly/near-queryapi-beta).
 
 :::
 
@@ -18,7 +18,7 @@ This indexer creates a new row in a pre-defined `posts` or `comments` table crea
 
 :::tip
 
-This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=somepublicaddress.near/hypeindexer&view=indexer-status).
+This indexer can be found by [following this link](https://near.org/#/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/hype-indexer).
 
 :::
 
@@ -141,7 +141,7 @@ The logic for this looks like:
 
   if (nearSocialPostsComments.length > 0) {
     const blockHeight = block.blockHeight;
-    const blockTimestamp = block.header().timestampNanosec;
+    const blockTimestamp = Number(block.header().timestampNanosec);
     await Promise.all(
       nearSocialPostsComments.map(async (postAction) => {
         const accountId = Object.keys(postAction.args.data)[0];
@@ -203,6 +203,8 @@ The logic for this looks like:
 
 #### `createPost`
 
+Creating a post is done by using the [`context.db.Posts.insert()`](../../queryapi/context.md#insert) function:
+
 ```js
   async function createPost(
     postId,
@@ -214,25 +216,14 @@ The logic for this looks like:
   ) {
     try {
       const postObject = {
-        post: {
           id: postId,
           account_id: accountId,
           block_height: blockHeight,
           block_timestamp: blockTimestamp,
           receipt_id: receiptId,
           content: postContent,
-        },
       };
-      await context.graphql(`
-        mutation createPost($post: somepublicaddress_near_hypeindexer_posts_insert_input!){
-          insert_somepublicaddress_near_hypeindexer_posts_one(
-            object: $post
-          ) {
-            id
-          }
-        }`,
-        postObject
-      );
+      await context.db.Posts.insert(postObject);
       console.log("Post created!");
     } catch (error) {
       console.error(error);
@@ -241,6 +232,8 @@ The logic for this looks like:
 ```
 
 #### `createComment`
+
+Creating a comment is done by using the [`context.db.Comments.insert()`](../../queryapi/context.md#insert) function:
 
 ```js
   async function createComment(
@@ -253,25 +246,14 @@ The logic for this looks like:
   ) {
     try {
       const commentObject = {
-        comment: {
           account_id: accountId,
           post_id: postId,
           block_height: blockHeight,
           block_timestamp: blockTimestamp,
           receipt_id: receiptId,
           content: commentContent,
-        },
       };
-      await context.graphql(`
-        mutation createComment($comment: somepublicaddress_near_hypeindexer_comments_insert_input!){
-          insert_somepublicaddress_near_hypeindexer_comments_one(
-            object: $comment
-          ) {
-            id
-          }
-        }`,
-        commentObject
-      );
+      await context.db.Comments.insert(commentObject);
       console.log("Comment created!");
     } catch (error) {
       console.error(error);
@@ -300,7 +282,7 @@ query MyQuery {
 }
 ```
 
-Once you have defined your query, you can use the GraphiQL Code Exporter to auto-generate a JavaScript or BOS Widget code snippet. The exporter will create a helper method `fetchGraphQL` which will allow you to fetch data from the indexer's GraphQL API. It takes three parameters:
+Once you have defined your query, you can use the GraphiQL Code Exporter to auto-generate a JavaScript or NEAR Widget code snippet. The exporter will create a helper method `fetchGraphQL` which will allow you to fetch data from the indexer's GraphQL API. It takes three parameters:
 
 - `operationsDoc`: A string containing the queries you would like to execute.
 - `operationName`: The specific query you want to run.
@@ -308,7 +290,7 @@ Once you have defined your query, you can use the GraphiQL Code Exporter to auto
 
 Next, you can call the `fetchGraphQL` function with the appropriate parameters and process the results. 
 
-Here's the complete code snippet for a BOS component using the _Hype Indexer_:
+Here's the complete code snippet for a NEAR component using the _Hype Indexer_:
 
 ```js
 const QUERYAPI_ENDPOINT = `https://near-queryapi.api.pagoda.co/v1/graphql/`;

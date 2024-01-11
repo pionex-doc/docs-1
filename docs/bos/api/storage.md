@@ -6,8 +6,6 @@ sidebar_label: Storage
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Storage
-
 `Storage` object to store data for components that is persistent across refreshes. Simulates `localStorage` access. It has 4 methods:
 
 - [`Storage.get`](#storageget)
@@ -19,17 +17,17 @@ import TabItem from '@theme/TabItem';
 
 `Storage.get(key, widgetSrc?)` - returns the public value for a given key under the given widgetSrc or the current component if `widgetSrc` is omitted. Can only read public values.
 
- | param      |  required     | type               | description                                                           |
- |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
- | `key`      |  **required** | object   | a user-defined key  |
- | `widgetSrc`  |  _optional_ | object   | a user-defined component  |
+ | param       | required     | type   | description              |
+ |-------------|--------------|--------|--------------------------|
+ | `key`       | **required** | object | a user-defined key       |
+ | `widgetSrc` | _optional_   | object | a user-defined component |
 
 ### Examples
 
 <Tabs>
 <TabItem value="request" label="Request" default>
 
-```jsx
+```js
 const notificationFeedSrc = "mob.near/widget/NotificationFeed";
 
 const lastBlockHeight = Storage.get("lastBlockHeight", notificationFeedSrc);
@@ -57,10 +55,10 @@ See a full example in the [NotificationButton source code](https://near.social/#
 
 `Storage.set(key, value)` - sets the public value for a given key under the current widget. The value will be public, so other widgets can read it.
 
- | param      |  required     | type               | description                                                           |
- |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
- | `key`      |  **required** | object   | a user-defined key  |
- | `value`    |  **required** | object   | a user-defined value  |
+ | param   | required     | type   | description          |
+ |---------|--------------|--------|----------------------|
+ | `key`   | **required** | object | a user-defined key   |
+ | `value` | **required** | object | a user-defined value |
 
 
 ### Examples
@@ -68,7 +66,7 @@ See a full example in the [NotificationButton source code](https://near.social/#
 <Tabs>
 <TabItem value="request" label="Request" default>
 
-```jsx
+```js
 const accountId = context.accountId;
 
 const notifications = Social.index("notify", accountId, {
@@ -100,16 +98,16 @@ See a full example in the [NotificationFeed source code](https://near.social/#/m
 
 `Storage.privateGet(key)` - returns the private value for a given key under the current component.
 
- | param      |  required     | type               | description                                                           |
- |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
- | `key`      |  **required** | object   | a user-defined key under the current component  |
+ | param | required     | type   | description                                    |
+ |-------|--------------|--------|------------------------------------------------|
+ | `key` | **required** | object | a user-defined key under the current component |
 
 ### Examples
 
 <Tabs>
 <TabItem value="request" label="Request" default>
 
-```jsx
+```js
 const mySecretData = Storage.privateGet("secretKey");
 ```
 
@@ -133,17 +131,17 @@ const mySecretData = Storage.privateGet("secretKey");
 Private and public values can share the same key and don't conflict.
 :::
 
- | param      |  required     | type               | description                                                           |
- |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
- | `key`      |  **required** | object   | a user-defined key under the current component |
- | `value`    |  **required** | object   | a user-defined value  |
+ | param   | required     | type   | description                                    |
+ |---------|--------------|--------|------------------------------------------------|
+ | `key`   | **required** | object | a user-defined key under the current component |
+ | `value` | **required** | object | a user-defined value                           |
 
 ### Examples
 
 <Tabs>
 <TabItem value="request" label="Request" default>
 
-```jsx
+```js
 Storage.privateSet("secretKey", "my-secret-value");
 ```
 

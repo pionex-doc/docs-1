@@ -8,7 +8,7 @@ sidebar_label: Posts Indexer
 
 NEAR QueryAPI is currently under development. Users who want to test-drive this solution need to be added to the allowlist before creating or forking QueryAPI indexers. 
 
-You can request access through [this link](https://near.org/dev-queryapi.dataplatform.near/widget/NearQueryApi) or by contacting us in the [Near Indexer Builder Group](https://nearbuilders.com/tg-data) on Telegram.
+You can request access through [this link](http://bit.ly/near-queryapi-beta).
 
 :::
 
@@ -18,7 +18,7 @@ This indexer creates a new row in a pre-defined `posts` table created by the use
 
 :::tip
 
-This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=somepublicaddress.near/postsexample&view=indexer-status).
+This indexer can be found by [following this link](https://near.org/dataplatform.near/widget/QueryApi.App?selectedIndexerPath=bucanero.near/posts-example).
 
 :::
 
@@ -97,7 +97,7 @@ async function getBlock(block: Block, context) {
 }
 ```
 
-This function first defines a helper function called `base64decode` that decodes base64 encoded data. It then defines a constant called `SOCIAL_DB` that is the name of the database that stores the posts from the BOS. It then filters the blockchain transactions for a specific type of transaction. This is done by:
+This function first defines a helper function called `base64decode` that decodes base64 encoded data. It then defines a constant called `SOCIAL_DB` that is the name of the smart contract that stores the posts in NEAR. It then filters the blockchain transactions for a specific type of transaction. This is done by:
 
 1. Filtering the blockchain transactions for transactions where the `receiverId` is the `SOCIAL_DB` database
 2. Mapping the operations of the filtered transactions to the `FunctionCall` operation
@@ -109,16 +109,16 @@ This function returns an array of objects that contain the `FunctionCall` operat
 
 ### Saving the Data to the Database
 
-The second part of the logic is to save the data from the filtered transactions to the database. This is done by using the `context.graphql` function. This function takes in a string for the graphQL query and returns a promise. The `context.graphql` function will be called for every filtered transaction as defined by the `.map()` function called on the array of `nearSocialPosts`.
+The second part of the logic is to save the data from the filtered transactions to the database. This is done by using the [`context.db.Posts.insert()`](../../queryapi/context.md#insert) function. The `context.db.Posts.insert()` function will be called for every filtered transaction as defined by the `.map()` function called on the array of `nearSocialPosts`.
 
-The `context.graphql` function for this indexer looks like this:
+The function for this indexer looks like this:
 
 ```js
   ... // Logic for filtering blockchain transactions, defining nearSocialPosts
 
   if (nearSocialPosts.length > 0) {
     const blockHeight = block.blockHeight;
-    const blockTimestamp = block.header().timestampNanosec;
+    const blockTimestamp = Number(block.header().timestampNanosec);
     await Promise.all(
       nearSocialPosts.map(async (postAction) => {
         const accountId = Object.keys(postAction.args.data)[0];
@@ -131,26 +131,14 @@ The `context.graphql` function for this indexer looks like this:
         ) {
           try {
             console.log("Creating a post...");
-            const mutationData = {
-              post: {
+            const postData = {
                 account_id: accountId,
                 block_height: blockHeight,
                 block_timestamp: blockTimestamp,
                 receipt_id: postAction.receiptId,
                 content: postAction.args.data[accountId].post.main,
-              },
             };
-            await context.graphql(`
-              mutation CreatePost($post: PostInput!) {
-                insert_somepublicaddress_near_postsexample_posts_one(
-                  object: $post
-                ) {
-                  account_id
-                  block_height
-                }
-              }`,
-              mutationData
-            );
+            await context.db.Posts.insert(postData);
             console.log(`Post by ${accountId} has been added to the database`);
           } catch (e) {
             console.error(`Error creating a post by ${accountId}: ${e}`);
@@ -177,7 +165,7 @@ query MyQuery {
 }
 ```
 
-Once you have defined your query, you can use the GraphiQL Code Exporter to auto-generate a JavaScript or BOS Widget code snippet. The exporter will create a helper method `fetchGraphQL` which will allow you to fetch data from the indexer's GraphQL API. It takes three parameters:
+Once you have defined your query, you can use the GraphiQL Code Exporter to auto-generate a JavaScript or NEAR Widget code snippet. The exporter will create a helper method `fetchGraphQL` which will allow you to fetch data from the indexer's GraphQL API. It takes three parameters:
 
 - `operationsDoc`: A string containing the queries you would like to execute.
 - `operationName`: The specific query you want to run.
@@ -185,7 +173,7 @@ Once you have defined your query, you can use the GraphiQL Code Exporter to auto
 
 Next, you can call the `fetchGraphQL` function with the appropriate parameters and process the results. 
 
-Here's the complete code snippet for a BOS component using the _Posts Indexer_:
+Here's the complete code snippet for a NEAR component using the _Posts Indexer_:
 
 ```js
 const QUERYAPI_ENDPOINT = `https://near-queryapi.api.pagoda.co/v1/graphql/`;
