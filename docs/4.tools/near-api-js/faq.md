@@ -1,5 +1,5 @@
 ---
-id: faq
+id: faqxsss
 title: FAQ for NEAR JavaScript API
 sidebar_label: FAQ
 ---
